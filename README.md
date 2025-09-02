@@ -18,7 +18,9 @@ Tinkercad provides a simulation environment where this circuit can be virtually 
 
 
 
-## Circuit Diagram:
+## Circuit Diagram/Tinkercad Circuit:
+
+<img width="1424" height="728" alt="image" src="https://github.com/user-attachments/assets/834877c8-9738-4e82-ae9f-d3700d8d25ff" />
  
 ## Procedure: //Modify the procedure based on your circuit
 
@@ -50,10 +52,6 @@ Step 6: Test and Validate
 Step 7: Save Your Work
 14.	Stop Simulation: Click the “Stop Simulation” button to end the test.
 15.	Save Circuit: Click “Save” to store your design and code for future use or presentation.
-
-## Tinkercad Circuit :
-
-<img width="1424" height="728" alt="image" src="https://github.com/user-attachments/assets/834877c8-9738-4e82-ae9f-d3700d8d25ff" />
 
 
 ## Code:
