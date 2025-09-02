@@ -51,12 +51,54 @@ Step 7: Save Your Work
 14.	Stop Simulation: Click the “Stop Simulation” button to end the test.
 15.	Save Circuit: Click “Save” to store your design and code for future use or presentation.
 
+## Tinkercad Circuit :
+
+<img width="1424" height="728" alt="image" src="https://github.com/user-attachments/assets/834877c8-9738-4e82-ae9f-d3700d8d25ff" />
+
 
 ## Code:
+```
+#define echoPin 2   // Echo pin connected to Arduino pin 2
+#define trigPin 3   // Trigger pin connected to Arduino pin 3
 
+long duration;   // Declare only once
+int distance;    // Declare only once
+
+void setup() {
+  pinMode(trigPin, OUTPUT);  // Set trigPin as output
+  pinMode(echoPin, INPUT);   // Set echoPin as input
+  Serial.begin(9600);        // Start serial communication
+}
+
+void loop() {
+  // Clear the trigPin condition
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+
+  // Set the trigPin HIGH (ACTIVE) for 10 microseconds
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+
+  // Reads the echoPin, returns the sound wave travel time in microseconds
+  duration = pulseIn(echoPin, HIGH);
+
+  // Calculating the distance
+  distance = duration * 0.034 / 2; // Speed of sound 0.034 cm/µs (divided by 2 for go and return)
+
+  // Displays the distance on the Serial Monitor
+  Serial.print("Distance: ");
+  Serial.print(distance);
+  Serial.println(" cm");
+}
+```
 
 ## Output:
- 
+
+
+
+https://github.com/user-attachments/assets/89aa76fe-9efa-4a95-86b5-f1ba1d3468f7
+
 
 
 ## Result
