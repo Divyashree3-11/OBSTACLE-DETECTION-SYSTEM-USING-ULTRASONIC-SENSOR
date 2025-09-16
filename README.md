@@ -20,8 +20,8 @@ Tinkercad provides a simulation environment where this circuit can be virtually 
 
 ## Circuit Diagram/Tinkercad Circuit:
 
-<img width="1424" height="728" alt="image" src="https://github.com/user-attachments/assets/834877c8-9738-4e82-ae9f-d3700d8d25ff" />
- 
+<img width="826" height="550" alt="image" src="https://github.com/user-attachments/assets/fcdf4ade-6a2e-4f89-8795-f4eeb3e14262" />
+
 ## Procedure: //Modify the procedure based on your circuit
 
 Step 1: Set Up the Tinkercad Environment
@@ -56,51 +56,50 @@ Step 7: Save Your Work
 
 ## Code:
 ```
-#define echoPin 2   // Echo pin connected to Arduino pin 2
-#define trigPin 3   // Trigger pin connected to Arduino pin 3
-
-long duration;   // Declare only once
-int distance;    // Declare only once
+#define trigPin 9
+#define echoPin 10
+#define buzzer 7
 
 void setup() {
-  pinMode(trigPin, OUTPUT);  // Set trigPin as output
-  pinMode(echoPin, INPUT);   // Set echoPin as input
-  Serial.begin(9600);        // Start serial communication
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+  pinMode(buzzer, OUTPUT);
+  Serial.begin(9600);
 }
 
 void loop() {
-  // Clear the trigPin condition
+  long duration;
+  int distance;
+
+  // Trigger the sensor
   digitalWrite(trigPin, LOW);
   delayMicroseconds(2);
-
-  // Set the trigPin HIGH (ACTIVE) for 10 microseconds
   digitalWrite(trigPin, HIGH);
   delayMicroseconds(10);
   digitalWrite(trigPin, LOW);
 
-  // Reads the echoPin, returns the sound wave travel time in microseconds
+  // Read the echo
   duration = pulseIn(echoPin, HIGH);
+  distance = duration * 0.034 / 2; // in cm
 
-  // Calculating the distance
-  distance = duration * 0.034 / 2; // Speed of sound 0.034 cm/µs (divided by 2 for go and return)
-
-  // Displays the distance on the Serial Monitor
   Serial.print("Distance: ");
-  Serial.print(distance);
-  Serial.println(" cm");
+  Serial.println(distance);
+
+  if (distance < 20) {   // if object closer than 20 cm
+    digitalWrite(buzzer, HIGH); // buzzer on
+  } else {
+    digitalWrite(buzzer, LOW);  // buzzer off
+  }
+
+  delay(200);
 }
+
 ```
 
 ## Output:
 
-
-
-https://github.com/user-attachments/assets/89aa76fe-9efa-4a95-86b5-f1ba1d3468f7
-
-
+https://github.com/user-attachments/assets/ebce7426-466a-4be8-81d1-4b1387da8d7c
 
 ## Result
 
-
-Result:
 The simulation successfully measured the distance between the ultrasonic sensor  HC-SR04 and the object. The real-time distance values were accurately displayed on the serial monitor in centimeters.
